@@ -27,8 +27,9 @@ library
       Klaus.Paperwork
       Klaus.WordBook
       Klaus.Elves.Matthew
+      Klaud.Elves.Nemo
       Klaus.Elves.Parsifal
-      Klaus.Submarine.Data
+      Klaus.Submarine
       Klaus.Submarine.Sonar
 
   build-depends:
@@ -42,3 +43,7 @@ common execs
 executable y21d01
    import:              execs
    main-is:             y21d01.hs
+
+executable y21d02
+   import:              execs
+   main-is:             y21d02.hs

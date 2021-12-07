@@ -1,7 +1,7 @@
 module Klaus.Submarine.Sonar where
 
-import Klaus.Submarine.Data
+import Klaus.WordBook
 
-type Measurement = DepthValue
+type Measurement = ElfFeet
 
 type Sweep = [Measurement]
