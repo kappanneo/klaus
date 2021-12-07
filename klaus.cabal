@@ -1,0 +1,43 @@
+cabal-version:       2.4
+name:                klaus
+version:             0.1.0.0
+synopsis:            Haskell library for solving Advent of Code problems
+description:         Actually a collection of jokes in the form of a cluster of 
+                     haskell modules
+homepage:            https://github.com/kappanneo/klaus
+license:             ISC
+license-file:        LICENSE
+author:              Claudio Pannacci
+maintainer:          claudio.pannacci@protonmail.com
+copyright:           2021 Claudio Pannacci
+category:            None
+build-type:          Simple
+
+source-repository head
+   type: git
+   location: https://github.com/kappanneo/klaus
+
+library
+   hs-source-dirs:      src
+   default-language:    Haskell2010
+
+   exposed-modules:
+      Klaus
+      Klaus.Accounting
+      Klaus.Paperwork
+      Klaus.WordBook
+      Klaus.Elves.Matthew
+      Klaus.Elves.Parsifal
+      Klaus.Submarine.Sonar
+
+  build-depends:
+    base                ^>= 4.14
+
+common execs
+   hs-source-dirs:      execs
+   build-depends:       klaus, base
+   default-language:    Haskell2010
+
+executable y21d01
+   import:              execs
+   main-is:             y21d01.hs
