@@ -28,6 +28,7 @@ library
       Klaus.WordBook
       Klaus.Elves.Matthew
       Klaus.Elves.Parsifal
+      Klaus.Submarine.Data
       Klaus.Submarine.Sonar
 
   build-depends:
