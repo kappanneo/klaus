@@ -10,8 +10,8 @@ import qualified Klaus as Santa
 main :: IO ()
 main = do -- IO
    args <- getArgs
-   printout <- readFile $ if null args then "inputs/y21d01.txt" else args!!0
-   let (Sonar.SweepData xs) = Parsy.read printout :: Sonar.SweepData
-   let p1 = Matth.count (uncurry (<)) (zip xs (tail xs)) :: Result
-   let p2 = Matth.count (uncurry (<)) (zip xs (drop 3 xs)) :: Result
+   p <- readFile $ if null args then "inputs/y21d01.txt" else args!!0
+   let ms = Parsy.readSonarSweepPrintout p :: [Sonar.Measurement]
+   let p1 = Matth.count (uncurry (<)) (zip ms (tail ms)) :: Result
+   let p2 = Matth.count (uncurry (<)) (zip ms (drop 3 ms)) :: Result
    Santa.takeCreditForElvesUnderpaidWork p1 p2

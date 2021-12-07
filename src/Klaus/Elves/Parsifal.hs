@@ -1,10 +1,7 @@
 module Klaus.Elves.Parsifal where
 
-import qualified Klaus.Paperwork as Paperwork
+import Klaus.Paperwork
 import qualified Klaus.Submarine.Sonar as Sonar
 
-class ParsifalCanReadIt a where
-   read :: Paperwork.Printout -> a
-
-instance ParsifalCanReadIt Sonar.SweepData where
-   read = Sonar.SweepData . map Prelude.read . lines
+readSonarSweepPrintout :: Printout -> Sonar.Sweep
+readSonarSweepPrintout = map read . lines
