@@ -1,3 +1,4 @@
 :set prompt "> "
 :set -XFlexibleInstances
 :set -XTypeSynonymInstances
+:set -Wall

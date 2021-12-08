@@ -1,5 +1,7 @@
 import System.Environment
 
+import Klaus.WordBook
+
 import qualified Klaus as Santa
 
 main :: IO ()
