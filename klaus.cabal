@@ -26,14 +26,16 @@ library
       Klaus.Accounting
       Klaus.Paperwork
       Klaus.WordBook
+      Klaus.Elves.Linus
       Klaus.Elves.Matthew
       Klaus.Elves.Nemo
       Klaus.Elves.Parsifal
       Klaus.Submarine
+      Klaus.Submarine.Data
       Klaus.Submarine.Sonar
 
-  build-depends:
-    base                ^>= 4.14
+   build-depends:
+      base              ^>= 4.14
 
 common execs
    hs-source-dirs:      execs
@@ -47,3 +49,7 @@ executable y21d01
 executable y21d02
    import:              execs
    main-is:             y21d02.hs
+
+executable y21d03
+   import:              execs
+   main-is:             y21d03.hs
