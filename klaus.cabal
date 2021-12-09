@@ -23,9 +23,9 @@ library
 
    exposed-modules:
       Klaus
-      Klaus.Accounting
-      Klaus.Paperwork
       Klaus.WordBook
+      Klaus.Elves.Argo
+      Klaus.Elves.Justin
       Klaus.Elves.Linus
       Klaus.Elves.Matthew
       Klaus.Elves.Nemo

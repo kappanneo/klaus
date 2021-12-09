@@ -1,17 +1,18 @@
-import System.Environment
+import qualified Klaus.Elves.Argo as Argo
+import qualified Klaus.Elves.Nemo as Nemo
+import qualified Klaus.Elves.Justin as Justin
+import qualified Klaus.Elves.Matthew as Matth
+import qualified Klaus.Elves.Parsifal as Parsy
+
+import qualified Klaus as Santa
 
 import Klaus.WordBook
-
-import qualified Klaus.Elves.Parsifal as Parsy 
-import qualified Klaus.Elves.Nemo as Nemo
 import qualified Klaus.Submarine as Subby
-import qualified Klaus as Santa
 
 main :: IO ()
 main = do -- IO
-   args <- getArgs
-   printout <- readFile $ if null args then "inputs/y21d02.txt" else args !! 0
-   let prog = Parsy.read printout :: Subby.Program
+   file <- Argo.findFile 2021 02 :: IO FilePath
+   prog <- Parsy.readFile file :: IO Subby.Program
    let (x, depth, _) = Nemo.runFromStart Subby.Mk1 prog :: Subby.Stats
    let p1 = x * depth :: Result
    let (x, depth, _) = Nemo.runFromStart Subby.Mk2 prog :: Subby.Stats

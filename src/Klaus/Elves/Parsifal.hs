@@ -3,20 +3,31 @@
 
 module Klaus.Elves.Parsifal where
 
-import Klaus.Paperwork
-
 import qualified Klaus.Submarine as Submarine
 import qualified Klaus.Submarine.Data as Submarine.Data
 import qualified Klaus.Submarine.Sonar as Sonar
 
+import System.IO (readFile)
+import Data.Char
+
+uppercase :: String -> String
+uppercase "" = ""
+uppercase (c:cs) = toUpper c : cs
+
 class Parsiable a where
-   read :: String -> a
+   readFile :: FilePath -> IO a
 
 instance Parsiable Sonar.Sweep where
-   read = map Prelude.read . lines
+   readFile file = do -- IO
+      s <- System.IO.readFile file
+      return . map read $ lines s
 
 instance Parsiable Submarine.Program where
-   read = map (Prelude.read . uppercase) . lines
+   readFile file = do -- IO
+      s <- System.IO.readFile file
+      return . map (read . uppercase) $ lines s
 
 instance Parsiable Submarine.Data.Diagnostics where
-   read = map Prelude.read . lines
+   readFile file = do -- IO
+      s <- System.IO.readFile file
+      return . map read $ lines s
