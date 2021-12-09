@@ -4,7 +4,6 @@ import qualified Klaus.Elves.Matthew as Matth
 import qualified Klaus.Elves.Parsifal as Parsy
 import qualified Klaus as Santa
 
-import Prelude ((.), IO, FilePath)
 import Klaus.WordBook
 
 main :: IO ()
