@@ -9,14 +9,17 @@ import qualified Klaus as Santa
 import Klaus.WordBook ( Result )
 import qualified Klaus.Submarine as Subby
 
--- | >>> :main
+-- | @ --- Day 2: Dive! --- @
+--
+-- <https://adventofcode.com/2021/day/2>
+-- >>> main
 -- 2215080
 -- 1864715580
 --
 main :: IO ()
 main = do -- IO
-   file <- Argo.findFile 2021 02 :: IO FilePath
-   prog <- Parsy.readFile file :: IO Subby.Program
+   file <- Argo.inputFileFromArgs 2021 02 :: IO FilePath
+   prog <- Parsy.parseFile file :: IO Subby.Program
    let ( x, depth, _ ) = Nemo.runFromStart Subby.Mk1 prog :: Subby.Stats
    let p1 = x * depth :: Result
    let ( x, depth, _ ) = Nemo.runFromStart Subby.Mk2 prog :: Subby.Stats

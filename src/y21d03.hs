@@ -8,14 +8,17 @@ import qualified Klaus as Santa
 import Klaus.WordBook ( Result, Number )
 import qualified Klaus.Submarine.Data as Data
 
--- | >>> :main
+-- | @ --- Day 3: Binary Diagnostic --- @
+--
+-- <https://adventofcode.com/2021/day/3>
+-- >>> main
 -- 3912944
 -- 4996233
 --
 main :: IO ()
 main = do -- IO
-   file <- Argo.findFile 2021 03 :: IO FilePath
-   diagn <- Parsy.readFile file :: IO Data.Diagnostics
+   file <- Argo.inputFileFromArgs 2021 03 :: IO FilePath
+   diagn <- Parsy.parseFile file :: IO Data.Diagnostics
    let (epsilon, gamma) = Linus.decodeEpsilonGamma diagn :: (Number, Number)
    let p1 = gamma * epsilon :: Result
    let oxygen = Linus.decodeOxygen diagn :: Number

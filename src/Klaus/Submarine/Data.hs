@@ -47,7 +47,7 @@ instance Show Bit where
 -- 010100101
 --
 -- >>> show (read "101" :: [Bit]) == "101"
--- True  
+-- True
 --
 instance Read Bit where
    readsPrec _ ('B':'i':'t':'0':s) = [(Bit0, s)]

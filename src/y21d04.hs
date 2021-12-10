@@ -5,17 +5,18 @@ import qualified Klaus.Elves.Parsifal as Parsy
 import qualified Klaus as Santa
 
 import Klaus.WordBook ( Result, Xxx )
+import qualified Klaus.Submarine.Bingo as Bingo
 
--- | @  @
+-- | @ --- Day 4: Giant Squid --- @
 --
--- <https://adventofcode.com/2021/day/xx>
+-- <https://adventofcode.com/2021/day/4>
 -- >>> main
--- 0
--- 0
+-- 69579
+-- 14877
 --
 main :: IO ()
 main = do -- IO
-   file <- Argo.inputFileFromArgs 2021 01 :: IO FilePath
+   file <- Argo.inputFileFromArgs 2021 04 :: IO FilePath
    xxx <- Parsy.parseFile file :: IO Xxx
 
    let p1 = 0 :: Result

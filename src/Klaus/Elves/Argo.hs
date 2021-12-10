@@ -1,33 +1,39 @@
+{-# LANGUAGE BlockArguments #-}
+
 module Klaus.Elves.Argo where
 
 import System.Environment ( getArgs )
 import Klaus.WordBook ( Day, Year )
+import Data.List ( isPrefixOf )
 
--- | Returns the file path for the input file computed from 
--- the day and year numbers given to the function as parameters (default). 
--- If only one argument is passed to the executable it is interpreted as
+-- | Sets the default arguments
+-- -the day and year in numbers- that are replaced by the eventual
+-- arguments the program is executed with and used to construct and return 
+-- the file path of the input file.
+-- If only one argument is passed to the executable, it is interpreted as
 -- a complete path for a custom input file and the latter is returned instead.
 --
--- >>> findFile 2020 20
+-- >>> inputFileFromArgs 2020 20
 -- "inputs/y20d20.txt"
 --
-findFile:: Year -> Day -> IO FilePath
-findFile y d = do -- IO
+inputFileFromArgs :: Year -> Day -> IO FilePath
+inputFileFromArgs y d = do -- IO
    args <- getArgs
-   case args of
-      [] -> return (inputFilePath y d)
-      (a:_) -> return a
+   return case filter (not . isPrefixOf "-") args of
+      []      -> inputFile y d
+      (y:d:_) -> inputFile (read y) (read d)
+      (a:_)   -> a
 
--- | Returns the path to the input txt file mathcing the given day and year.
+-- | Returns the path to the input txt file matching the given day and year.
 --
--- >>> inputFilePath 2015 25
+-- >>> inputFile 2015 25
 -- "inputs/y15d25.txt"
 -- 
--- >>> inputFilePath 2021 01
+-- >>> inputFile 2021 01
 -- "inputs/y21d01.txt"
 --
-inputFilePath :: Year -> Day -> FilePath
-inputFilePath y d = "inputs/" ++ yearTag y ++ dayTag d ++ ".txt"
+inputFile :: Year -> Day -> FilePath
+inputFile y d = "inputs/" ++ yearTag y ++ dayTag d ++ ".txt"
 
 -- | Returns two-char representation of the given year number, prefixed
 -- by the char \'y\'. Only allows years from 2015 to 2100.
@@ -37,16 +43,6 @@ inputFilePath y d = "inputs/" ++ yearTag y ++ dayTag d ++ ".txt"
 --
 -- >>> yearTag 2083
 -- "y83"
---
--- >>> yearTag 3000
--- "*** Exception: invalid year, I'll probably be dead by then
--- CallStack (from HasCallStack):
---   error, called at src/Klaus/Elves/Argo.hs:53:25 in main:Klaus.Elves.Argo
---
--- >>> yearTag 2000
--- "*** Exception: invalid year, advent of code started in 2015
--- CallStack (from HasCallStack):
---   error, called at src/Klaus/Elves/Argo.hs:52:24 in main:Klaus.Elves.Argo
 --
 yearTag :: Year -> String
 yearTag y | y < 2015 = error "invalid year, advent of code started in 2015"
@@ -61,11 +57,6 @@ yearTag y | y < 2015 = error "invalid year, advent of code started in 2015"
 --
 -- >>> dayTag 13
 -- "d13"
---
--- >>> dayTag 32
--- "*** Exception: invalid day, should be in range (1,25)
--- CallStack (from HasCallStack):
---   error, called at src/Klaus/Elves/Argo.hs:71:20 in main:Klaus.Elves.Argo
 --
 dayTag :: Day -> String
 dayTag d | d < 1 = error "invalid day, should be in range (1,25)"

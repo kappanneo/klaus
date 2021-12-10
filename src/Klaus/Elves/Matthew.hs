@@ -14,9 +14,6 @@ import Data.List ( transpose )
 -- >>> count (const True) [1..10] :: Int
 -- 10
 --
--- >>> count (const True) [1..10] :: Bool
--- *** Exception: Prelude.Enum.Bool.succ: bad argument
---
 count :: (Enum b, Foldable t) => (a -> Bool) -> t a -> b
 count p = foldr (succIf p) (toEnum 0)
 
@@ -30,11 +27,8 @@ count p = foldr (succIf p) (toEnum 0)
 -- >>> succIf (=="ciao") "ciao" 'x'
 -- 'y'
 --
--- >>> succIf (<3) 2.99 (-1)
--- 0
---
--- >>> succIf null "" True
--- *** Exception: Prelude.Enum.Bool.succ: bad argument
+-- >>> succIf (<3) 2.99 (-1.0)
+-- 0.0
 --
 succIf :: Enum b => (a -> Bool) -> a -> b -> b
 succIf p x n = if p x then succ n else n

@@ -6,14 +6,17 @@ import qualified Klaus as Santa
 import Klaus.WordBook ( Result )
 import qualified Klaus.Submarine.Sonar as Sonar
 
--- | >>> :main
+-- | @ --- Day 1: Sonar Sweep --- @
+--
+-- <https://adventofcode.com/2021/day/1>
+-- >>> main
 -- 1688
 -- 1728
 --
 main :: IO ()
 main = do -- IO
-   file <- Argo.findFile 2021 01 :: IO FilePath
-   ms <- Parsy.readFile file :: IO Sonar.Sweep
+   file <- Argo.inputFileFromArgs 2021 01 :: IO FilePath
+   ms <- Parsy.parseFile file :: IO Sonar.Sweep
    let p1 = Matth.count ( uncurry (<) ) ( zip ms ( tail ms ) ) :: Result
    let p2 = Matth.count ( uncurry (<) ) ( zip ms ( drop 3 ms ) ) :: Result
    Santa.takeCreditForElvesUnderpaidWork p1 p2
