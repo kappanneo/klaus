@@ -37,10 +37,36 @@ library
    build-depends:
       base              ^>= 4.14
 
+test-suite doctests
+   type:                exitcode-stdio-1.0
+   main-is:             doctests.hs
+   ghc-options:         -threaded
+   default-language:    Haskell2010
+
+  build-depends:
+   base,
+   extra,
+   doctest   ^>= 0.17,
+   directory ^>= 1.3,
+   filepath  ^>= 1.4,
+
 common execs
-   hs-source-dirs:      execs
+   hs-source-dirs:      src
    build-depends:       klaus, base
    default-language:    Haskell2010
+
+   other-modules:
+      Klaus
+      Klaus.WordBook
+      Klaus.Elves.Argo
+      Klaus.Elves.Justin
+      Klaus.Elves.Linus
+      Klaus.Elves.Matthew
+      Klaus.Elves.Nemo
+      Klaus.Elves.Parsifal
+      Klaus.Submarine
+      Klaus.Submarine.Data
+      Klaus.Submarine.Sonar
 
 executable y21d01
    import:              execs

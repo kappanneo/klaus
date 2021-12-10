@@ -7,3 +7,6 @@ type Result = Word
 type UInt = Word
 type Year = Word
 type Day = Word
+type Xxx = Word
+
+-- yes, this module is a joke
