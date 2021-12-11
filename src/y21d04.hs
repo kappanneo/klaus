@@ -22,3 +22,21 @@ main = do -- IO
    let p1 = 0 :: Result
    let p2 = 0 :: Result
    Santa.takeCreditForElvesUnderpaidWork p1 p2
+
+{- from old repo
+solve :: String -> IO ()
+solve s = do -- IO
+   let ss = split "\n\n" s :: [String]
+   let ns = map read . split "," $ head ss :: [Number]
+   let bs = map readBoard $ tail ss :: [Board]
+   let wins = [ (last ns', b ! markAll ns')
+              | ns'<-(inits ns)
+              , b <- bs
+              , b ! markAll ns' ! hasWon && not (b ! markAll(init ns') ! hasWon)
+              ] :: [(Number,Board)]
+   let f (n,b) = (*) n . sum . map number . filter (not.marked) $ slots b
+   putStr "part I: "
+   print . f $ head wins
+   putStr "part II: "
+   print . f $ last wins
+-}
