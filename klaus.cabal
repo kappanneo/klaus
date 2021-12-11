@@ -30,6 +30,7 @@ library
       Klaus.Elves.Matthew
       Klaus.Elves.Nemo
       Klaus.Elves.Parsifal
+      Klaus.Elves.Rocco
       Klaus.Submarine
       Klaus.Submarine.Data
       Klaus.Submarine.Sonar
@@ -66,6 +67,7 @@ common execs
       Klaus.Elves.Matthew
       Klaus.Elves.Nemo
       Klaus.Elves.Parsifal
+      Klaus.Elves.Rocco
       Klaus.Submarine
       Klaus.Submarine.Data
       Klaus.Submarine.Sonar

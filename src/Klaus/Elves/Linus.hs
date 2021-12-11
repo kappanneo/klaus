@@ -6,8 +6,8 @@ import Klaus.Submarine.Data ( Bin, Bit(..), Diagnostics )
 
 import Data.Maybe ( fromMaybe, fromJust )
 import Data.List ( transpose )
+
 import Klaus.WordBook ( Number )
-import Control.Monad (filterM)
 
 -- | Class of complementable types.
 class Compl a where
@@ -101,9 +101,9 @@ leastCommBit bits | x > h = Just Bit0
                   | x < h = Just Bit1
                   | otherwise = Nothing
  where   
-   x = sum (map fromBit bits)
-   h = fromIntegral n / 2
-   n = length bits
+   x = sum (map fromBit bits) :: Double
+   h = fromIntegral n / 2     :: Double
+   n = length bits            :: Int
 
 -- | Policy that applied to a binary string returns a bit.
 type Policy = (Bin -> Bit)
@@ -123,12 +123,12 @@ decodeEpsilonGamma diagn = (fromBin epsilon, fromBin $ compl epsilon)
 -- representing the value of the target rating, otherwise.
 -- 
 decodeWith :: Policy -> Diagnostics -> Maybe Bin
-decodeWith p = d p 0
+decodeWith p = d 0
  where
-   d :: (Bin -> Bit) -> Int -> [Bin] -> Maybe Bin
-   d _ _ [] = Nothing
-   d _ _ [x] = Just x
-   d p i xs = d p (i + 1) (filter (\x -> x !! i == p (transpose xs !! i)) xs)
+   d :: Int -> [Bin] -> Maybe Bin
+   d _ [] = Nothing
+   d _ [x] = Just x
+   d i xs = d (i + 1) (filter (\x -> x !! i == p (transpose xs !! i)) xs)
 
 decodeOxygen :: Diagnostics -> Number
 decodeOxygen = fromBin . fromJust . decodeWith (fromMaybe Bit1 . mostCommBit)

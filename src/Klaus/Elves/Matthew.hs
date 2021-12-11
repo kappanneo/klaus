@@ -1,7 +1,5 @@
 module Klaus.Elves.Matthew where
 
-import Data.List ( transpose )
-
 -- | Returns the number elements for which the given 
 -- predicate is true.
 --

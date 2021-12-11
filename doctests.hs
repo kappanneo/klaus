@@ -1,7 +1,7 @@
 {-# LANGUAGE BlockArguments #-}
 
 import Data.Foldable ( for_ )
-import Data.List ( sort, isPrefixOf )
+import Data.List ( reverse, sort, isPrefixOf )
 import System.Directory ( listDirectory, Permissions (executable) )
 import System.Directory.Extra ( listDirectory, listFilesRecursive )
 import System.FilePath ( (</>), takeBaseName, takeExtension )
@@ -16,7 +16,7 @@ main = do -- IO
       doctest [file]
 
 allSourceFiles :: IO [FilePath]
-allSourceFiles = filter (\x -> takeExtension x == ".hs") . sort 
+allSourceFiles = filter (\x -> takeExtension x == ".hs") . reverse . sort 
    <$> listFilesRecursive "src"
 
 onlyExecutables :: IO [FilePath]

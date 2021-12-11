@@ -20,9 +20,9 @@ inputFileFromArgs :: Year -> Day -> IO FilePath
 inputFileFromArgs y d = do -- IO
    args <- getArgs
    return case filter (not . isPrefixOf "-") args of
-      []      -> inputFile y d
-      (y:d:_) -> inputFile (read y) (read d)
-      (a:_)   -> a
+      []        -> inputFile y d
+      (y':d':_) -> inputFile (read y') (read d')
+      (a:_)     -> a
 
 -- | Returns the path to the input txt file matching the given day and year.
 --
