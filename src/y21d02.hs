@@ -18,7 +18,7 @@ import qualified Klaus.Submarine as Subby
 --
 main :: IO ()
 main = do -- IO
-   file <- Argo.inputFileFromArgs 2021 02 :: IO FilePath
+   file <- Argo.fromArgs 2021 02 :: IO FilePath
    prog <- Parsy.parseFile file :: IO Subby.Program
    let ( x, depth, _ ) = Nemo.runFromStart Subby.Mk1 prog :: Subby.Stats
    let p1 = x * depth :: Result

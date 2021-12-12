@@ -19,7 +19,7 @@ import qualified GHC.IO.Encoding.Failure as Bingo
 --
 main :: IO ()
 main = do -- IO
-   file <- Argo.inputFileFromArgs 2021 04 :: IO FilePath
+   file <- Argo.fromArgs 2021 04 :: IO FilePath
    round <- Parsy.parseFile file :: IO Bingo.Round
    let wins = Rocco.play round :: [Bingo.Win]
    let p1 = Rocco.countPoints (head wins) :: Result

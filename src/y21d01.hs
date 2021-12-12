@@ -15,7 +15,7 @@ import qualified Klaus.Submarine.Sonar as Sonar
 --
 main :: IO ()
 main = do -- IO
-   file <- Argo.inputFileFromArgs 2021 01 :: IO FilePath
+   file <- Argo.fromArgs 2021 01 :: IO FilePath
    ms <- Parsy.parseFile file :: IO Sonar.Sweep
    let p1 = Matth.count ( uncurry (<) ) ( zip ms ( tail ms ) ) :: Result
    let p2 = Matth.count ( uncurry (<) ) ( zip ms ( drop 3 ms ) ) :: Result

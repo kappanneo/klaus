@@ -10,14 +10,14 @@ import Test.DocTest ( doctest )
 
 main :: IO ()
 main = do -- IO
-   files <- onlyExecutables
+   files <- allSourceFiles
    for_ files \file -> do -- IO
       hPutStrLn stderr ("\nTesting " ++ file)
       doctest [file]
 
 allSourceFiles :: IO [FilePath]
-allSourceFiles = filter (\x -> takeExtension x == ".hs") . reverse . sort 
+allSourceFiles = filter (\x -> takeExtension x == ".hs") . sort 
    <$> listFilesRecursive "src"
 
 onlyExecutables :: IO [FilePath]
-onlyExecutables = filter (isPrefixOf "src/y") <$> allSourceFiles
+onlyExecutables = reverse .  filter (isPrefixOf "src/y") <$> allSourceFiles

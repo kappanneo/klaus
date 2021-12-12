@@ -17,7 +17,7 @@ import qualified Klaus.Submarine.Data as Data
 --
 main :: IO ()
 main = do -- IO
-   file <- Argo.inputFileFromArgs 2021 03 :: IO FilePath
+   file <- Argo.fromArgs 2021 03 :: IO FilePath
    diagn <- Parsy.parseFile file :: IO Data.Diagnostics
    let (epsilon, gamma) = Linus.decodeEpsilonGamma diagn :: (Number, Number)
    let p1 = gamma * epsilon :: Result

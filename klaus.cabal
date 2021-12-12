@@ -84,3 +84,11 @@ executable y21d02
 executable y21d03
    import:              execs
    main-is:             y21d03.hs
+
+executable y21d04
+   import:              execs
+   main-is:             y21d04.hs
+
+executable y21d12
+   import:              execs
+   main-is:             y21d12.hs

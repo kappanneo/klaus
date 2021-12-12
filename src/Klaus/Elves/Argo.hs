@@ -6,18 +6,18 @@ import System.Environment ( getArgs )
 import Klaus.WordBook ( Day, Year )
 import Data.List ( isPrefixOf )
 
--- | Sets the default arguments
+-- | Returns the file path fot the input data. Also sets the default arguments
 -- -the day and year in numbers- that are replaced by the eventual
 -- arguments the program is executed with and used to construct and return 
 -- the file path of the input file.
 -- If only one argument is passed to the executable, it is interpreted as
 -- a complete path for a custom input file and the latter is returned instead.
 --
--- >>> inputFileFromArgs 2020 20
+-- >>> fromArgs 2020 20
 -- "inputs/y20d20.txt"
 --
-inputFileFromArgs :: Year -> Day -> IO FilePath
-inputFileFromArgs y d = do -- IO
+fromArgs :: Year -> Day -> IO FilePath
+fromArgs y d = do -- IO
    args <- getArgs
    return case filter (not . isPrefixOf "-") args of
       []        -> inputFile y d
