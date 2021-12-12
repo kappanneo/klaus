@@ -66,6 +66,6 @@ instance Parsiable Bingo.Board where
 
 instance Parsiable Bingo.Round where
    parseFile file = do -- IO
-      s <- readFile file
+      s <- readFile file :: IO String
       let (ns:bs) = splitOn "\n\n" s
       return (lineParse ns, map fileParse bs)
