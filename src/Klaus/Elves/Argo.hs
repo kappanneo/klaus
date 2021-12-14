@@ -51,6 +51,7 @@ yearTag y | y < 2015 = error "invalid year, advent of code started in 2015"
 
 -- | Returns two-char representation of the given day number, prefixed
 -- by the char \'d\'. Only allows advent-calendar days (from 1 to 25).
+-- Note: zero value will not raise errors so it can be use as default.
 --
 -- >>> dayTag 1
 -- "d01"
@@ -59,7 +60,7 @@ yearTag y | y < 2015 = error "invalid year, advent of code started in 2015"
 -- "d13"
 --
 dayTag :: Day -> String
-dayTag d | d < 1 = error "invalid day, should be in range (1,25)"
+dayTag d | d < 0 = error "invalid day, should be in range (1,25)"
          | d < 10 = 'd' : '0' : show d
          | d < 26 = 'd' : show d
          | otherwise = dayTag 0

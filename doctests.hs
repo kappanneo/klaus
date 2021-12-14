@@ -10,7 +10,7 @@ import Test.DocTest ( doctest )
 
 main :: IO ()
 main = do -- IO
-   files <- allSourceFiles
+   files <- onlyExecutables
    for_ files \file -> do -- IO
       hPutStrLn stderr ("\nTesting " ++ file)
       doctest [file]

@@ -8,7 +8,7 @@ import Klaus.WordBook ( Result )
 -- 2 
 -- 390490
 --
-takeCreditForElvesUnderpaidWork :: Result -> Result -> IO ()
+takeCreditForElvesUnderpaidWork :: (Show a, Show b) =>  a -> b -> IO ()
 takeCreditForElvesUnderpaidWork part1 part2 = do print part1
                                                  print part2
 
