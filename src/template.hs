@@ -1,6 +1,4 @@
 import qualified Klaus.Elves.Argo as Argo
-import qualified Klaus.Elves.Justin as Justin
-import qualified Klaus.Elves.Matthew as Matth
 import qualified Klaus.Elves.Parsifal as Parsy
 import qualified Klaus as Santa
 

@@ -36,6 +36,7 @@ library
       Klaus.Submarine.Sonar
       Klaus.Submarine.Bingo
       Klaus.Submarine.ITICS.Manual
+      Klaus.Submarine.Polymerization
 
    build-depends:
       base              ^>= 4.14,
@@ -74,6 +75,7 @@ common execs
       Klaus.Submarine.Sonar
       Klaus.Submarine.Bingo
       Klaus.Submarine.ITICS.Manual
+      Klaus.Submarine.Polymerization
 
 executable y21d01
    import:              execs
@@ -98,3 +100,7 @@ executable y21d12
 executable y21d13
    import:              execs
    main-is:             y21d13.hs
+
+executable y21d14
+   import:              execs
+   main-is:             y21d14.hs

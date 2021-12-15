@@ -7,13 +7,15 @@ import qualified Klaus.Submarine.Data as Data
 import qualified Klaus.Submarine.Sonar as Sonar
 import qualified Klaus.Submarine.Bingo as Bingo
 import qualified Klaus.Submarine.ITICS.Manual as Manual
+import qualified Klaus.Submarine.Polymerization as Polymerization
 
 import Klaus.WordBook ( Number )
 
 import Data.Char ( toUpper )
-import Data.List.Split ( splitOn, chunksOf, Splitter )
+import Data.List.Split ( splitOn, chunksOf )
 import Klaus.Submarine.Bingo (fromNumber)
 import Klaus.Submarine.Sonar (Passage(LeadsTo))
+import qualified Klaus.Submarine.Polymerization as Polymerization
 
 -- | Return the given string, but with the first letter capitalized.
 -- 
@@ -118,4 +120,19 @@ instance Parsiable Manual.Fold where
          rch = read . pure . toUpper
 
 instance Parsiable [Manual.Fold] where
+   parseLines = map parseLine . lines
+
+instance Parsiable Polymerization.Process where
+   parseFile file = do -- IO
+      s <- readFile file
+      let (templ,rules) = head2 $ splitOn "\n\n" s
+      return (parseLine s, parseLines rules)
+
+instance Parsiable Polymerization.Template where
+      parseLine = id
+
+instance Parsiable Polymerization.Rule where
+   parseLine = uncurry Polymerization.Then . head2 . splitOn " -> "
+
+instance Parsiable [Polymerization.Rule] where
    parseLines = map parseLine . lines

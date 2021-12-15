@@ -1,7 +1,5 @@
 module Klaus.Submarine.ITICS.Manual where
 
-import Data.List ( nub )
-
 import Klaus.WordBook ( Number )
 
 type Page1 = ([Dot], [Fold])
