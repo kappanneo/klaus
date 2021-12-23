@@ -104,3 +104,7 @@ executable y21d13
 executable y21d14
    import:              execs
    main-is:             y21d14.hs
+
+executable y21d23
+   import:              execs
+   main-is:             y21d23.hs

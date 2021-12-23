@@ -4,16 +4,16 @@ import qualified Klaus as Santa
 
 import Klaus.WordBook ( Result, Xxx )
 
--- | @  @
+-- | @ --- Day 23: Amphipod --- @
 --
--- <https://adventofcode.com/2021/day/xx>
+-- <https://adventofcode.com/2021/day/23>
 -- >>> main
 -- 0
 -- 0
 --
 main :: IO ()
 main = do -- IO
-   file <- Argo.fromArgs 2021 00 :: IO FilePath
+   file <- Argo.fromArgs 2021 23 :: IO FilePath
    xxx <- Parsy.parseFile file :: IO Xxx
 
    let p1 = 0 :: Result

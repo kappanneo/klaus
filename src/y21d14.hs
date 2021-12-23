@@ -17,8 +17,8 @@ main :: IO ()
 main = do -- IO
    file <- Argo.fromArgs 2021 14 :: IO FilePath
    (templ, rules) <- Parsy.parseFile file :: IO Polymerization.Process
-   print templ
-   print rules
+   -- print templ
+   -- print rules
    let p1 = 0 :: Result
    let p2 = 0 :: Result
    Santa.takeCreditForElvesUnderpaidWork p1 p2
