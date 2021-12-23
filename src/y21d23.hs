@@ -4,6 +4,8 @@ import qualified Klaus as Santa
 
 import Klaus.WordBook ( Result, Xxx )
 
+import qualified Klaus.Bestiary.Amphipod as Amphipod
+
 -- | @ --- Day 23: Amphipod --- @
 --
 -- <https://adventofcode.com/2021/day/23>
@@ -14,7 +16,7 @@ import Klaus.WordBook ( Result, Xxx )
 main :: IO ()
 main = do -- IO
    file <- Argo.fromArgs 2021 23 :: IO FilePath
-   xxx <- Parsy.parseFile file :: IO Xxx
+   graph <- Parsy.parseFile file :: IO Amphipod.Nest
 
    let p1 = 0 :: Result
    let p2 = 0 :: Result
