@@ -17,7 +17,7 @@ main :: IO ()
 main = do -- IO
    file <- Argo.fromArgs 2021 23 :: IO FilePath
    graph <- Parsy.parseFile file :: IO Amphipod.Nest
-
+   
    let p1 = 0 :: Result
    let p2 = 0 :: Result
    Santa.takeCreditForElvesUnderpaidWork p1 p2

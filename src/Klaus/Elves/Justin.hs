@@ -9,9 +9,7 @@ import Data.Maybe ( fromJust )
 -- Nothing
 -- 
 -- >>> Data.Maybe.fromJust (Nothing) 
--- *** Exception: Maybe.fromJust: Nothing
--- CallStack (from HasCallStack):
---   error, called at libraries/base/Data/Maybe.hs:148:21 in base:Data.Maybe
---   fromJust, called at <interactive>:25:1 in interactive:Ghci5
+-- Maybe.fromJust: Nothing
+--
 fromJust :: Maybe a -> a
 fromJust = Data.Maybe.fromJust

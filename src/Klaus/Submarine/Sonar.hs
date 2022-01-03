@@ -3,7 +3,7 @@ module Klaus.Submarine.Sonar where
 import Klaus.WordBook ( Measurement )
 
 -- | A sonar sweep consists of a series of depth measurements.
-type Sweep = [Measurement]
+newtype Sweep = Sweep [Measurement] deriving (Eq,Read,Show)
 
 -- | A sona scan allows to detect passages and opening between underwater
 -- caves. The 'Scan' data type stores the resulting graph in the form 
